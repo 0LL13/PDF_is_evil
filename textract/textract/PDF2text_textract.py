@@ -11,6 +11,7 @@ def get_text_w_textract(method='') -> str:
     path = Path(__location__)
     __location__ = path.parent.parent.absolute()
 
+    # file_loc = os.path.join(__location__, "PDFs/percentages_float_and_high_numbers.pdf")  # noqa
     file_loc = os.path.join(__location__, "PDFs/left_col_bottom_to_right_col_top.pdf")  # noqa
 
     byte_text = textract.process(file_loc, language='ger',)  # noqa
