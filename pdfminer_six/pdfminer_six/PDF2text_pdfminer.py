@@ -18,6 +18,7 @@ def get_text_w_pdfminer_six(file_loc=None) -> str:
     path = Path(__location__)
     __location__ = path.parent.parent.absolute()
 
+    # file_loc = os.path.join(__location__, "PDFs/bgbl1_2021_75.pdf")  # noqa
     # file_loc = os.path.join(__location__, "PDFs/percentages_float_and_high_numbers.pdf")  # noqa
     file_loc = os.path.join(__location__, "PDFs/left_col_bottom_to_right_col_top.pdf")  # noqa
 
@@ -36,5 +37,10 @@ def get_text_w_pdfminer_six(file_loc=None) -> str:
 
 
 if __name__ == "__main__":
+    from contextlib import redirect_stdout
+
     text = get_text_w_pdfminer_six()
     print(text)
+    with open("result.txt", "w") as fout:
+        with redirect_stdout(fout):
+            print(text)
